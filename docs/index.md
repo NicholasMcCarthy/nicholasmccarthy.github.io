@@ -1,12 +1,14 @@
 
 :fontawesome-regular-face-laugh-wink:
 
-:fontawesome-github:
+:fontawesome-brands-github:
 
-:fontawesome-fa-linkedin-square:
+:fontawesome-brands-linkedin:
 
-:fontawesome-linkedin-square:
 
+:fontawesome-brands-instagram:
+
+:simple-accenture:
 
 `ris:Github` [GitHub](https://github.com/NicholasMcCarthy/)
 `ris:Linkedin` [LinkedIn](https://www.linkedin.com/in/nicholas-mccarthy-5a678a34/)
