@@ -1,9 +1,9 @@
-site_name: Nicholas McCarthy, PhD
+site_name: Nicholas McCarthy
 site_url: https://nicholasmccarthy.github.io
 
 theme:
   name: terminal
-  palette: dark
+  palette: default
   features:
     - footer.prev_next
     - navigation.side.indexes
@@ -17,6 +17,7 @@ nav:
 markdown_extensions:
   - footnotes
   - attr_list
+  - md_in_html
   - pymdownx.arithmatex:
       generic: true
   - pymdownx.tasklist:

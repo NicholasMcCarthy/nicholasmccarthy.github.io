@@ -27,5 +27,7 @@ technical depth, delivery discipline, and governance all matter.
 
 ## Contact
 
-- [GitHub](https://github.com/NicholasMcCarthy/)
-- [LinkedIn](https://www.linkedin.com/in/nicholas-mccarthy-5a678a34/)
+<div class="btn-group" markdown>
+[GitHub](https://github.com/NicholasMcCarthy/){ .btn .btn-default .btn-ghost }
+[LinkedIn](https://www.linkedin.com/in/nicholas-mccarthy-5a678a34/){ .btn .btn-default .btn-ghost }
+</div>
