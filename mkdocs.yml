@@ -34,3 +34,6 @@ plugins:
   - search
   - roamlinks
   - mermaid2
+
+extra_javascript:
+  - js/wingdings-overlay.js
