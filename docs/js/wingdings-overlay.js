@@ -98,10 +98,22 @@
         margin: 0 0 8px;
       }
 
+      .wingdings-setting-value {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+        align-items: flex-start;
+      }
+
       .wingdings-setting-label {
         display: block;
-        font-size: 0.75rem;
+        font-size: 0.8rem;
         margin: 0 0 3px;
+      }
+
+      .wingdings-setting-value-label {
+        font-size: 0.68rem;
+        opacity: 0.75;
       }
 
       .wingdings-setting-slider {
@@ -139,30 +151,47 @@
   };
 
   const createSettingRow = (definition) => {
-    const row = document.createElement("label");
+    const row = document.createElement("div");
     row.className = "wingdings-setting-row";
     row.setAttribute("data-wingdings-control", "true");
+
+    const controlIdBase = `wingdings-setting-${definition.key}`;
+    const sliderId = `${controlIdBase}-slider`;
+    const numberId = `${controlIdBase}-number`;
 
     const sliderWrap = document.createElement("div");
     sliderWrap.setAttribute("data-wingdings-control", "true");
 
-    const label = document.createElement("span");
+    const label = document.createElement("label");
     label.className = "wingdings-setting-label";
     label.textContent = definition.label;
+    label.htmlFor = sliderId;
     label.setAttribute("data-wingdings-control", "true");
 
     const slider = document.createElement("input");
     slider.type = "range";
     slider.className = "wingdings-setting-slider";
+    slider.id = sliderId;
     slider.min = String(definition.min);
     slider.max = String(definition.max);
     slider.step = String(definition.step);
     slider.value = formatValue(settings[definition.key], definition.step);
     slider.setAttribute("data-wingdings-control", "true");
 
+    const numberWrap = document.createElement("div");
+    numberWrap.className = "wingdings-setting-value";
+    numberWrap.setAttribute("data-wingdings-control", "true");
+
+    const numberLabel = document.createElement("label");
+    numberLabel.className = "wingdings-setting-value-label";
+    numberLabel.textContent = "Value";
+    numberLabel.htmlFor = numberId;
+    numberLabel.setAttribute("data-wingdings-control", "true");
+
     const number = document.createElement("input");
     number.type = "number";
     number.className = "wingdings-setting-number";
+    number.id = numberId;
     number.min = String(definition.min);
     number.max = String(definition.max);
     number.step = String(definition.step);
@@ -189,7 +218,8 @@
     number.addEventListener("blur", () => setValue(number.value));
 
     sliderWrap.append(label, slider);
-    row.append(sliderWrap, number);
+    numberWrap.append(numberLabel, number);
+    row.append(sliderWrap, numberWrap);
     return row;
   };
 
