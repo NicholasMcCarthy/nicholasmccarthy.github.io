@@ -92,10 +92,16 @@
 
       .wingdings-setting-row {
         display: grid;
-        grid-template-columns: 1fr auto;
+        grid-template-columns: minmax(116px, 1.2fr) minmax(120px, 2fr) auto;
         gap: 8px;
         align-items: center;
         margin: 0 0 8px;
+      }
+
+      .wingdings-setting-name {
+        font-size: 0.78rem;
+        font-weight: 700;
+        line-height: 1.25;
       }
 
       .wingdings-setting-value {
@@ -103,12 +109,6 @@
         flex-direction: column;
         gap: 3px;
         align-items: flex-start;
-      }
-
-      .wingdings-setting-label {
-        display: block;
-        font-size: 0.8rem;
-        margin: 0 0 3px;
       }
 
       .wingdings-setting-value-label {
@@ -144,6 +144,10 @@
           right: 8px;
           width: calc(100vw - 16px);
         }
+
+        .wingdings-setting-row {
+          grid-template-columns: 1fr;
+        }
       }
     `;
 
@@ -159,14 +163,13 @@
     const sliderId = `${controlIdBase}-slider`;
     const numberId = `${controlIdBase}-number`;
 
+    const name = document.createElement("div");
+    name.className = "wingdings-setting-name";
+    name.textContent = definition.label;
+    name.setAttribute("data-wingdings-control", "true");
+
     const sliderWrap = document.createElement("div");
     sliderWrap.setAttribute("data-wingdings-control", "true");
-
-    const label = document.createElement("label");
-    label.className = "wingdings-setting-label";
-    label.textContent = definition.label;
-    label.htmlFor = sliderId;
-    label.setAttribute("data-wingdings-control", "true");
 
     const slider = document.createElement("input");
     slider.type = "range";
@@ -217,9 +220,9 @@
     number.addEventListener("input", () => setValue(number.value));
     number.addEventListener("blur", () => setValue(number.value));
 
-    sliderWrap.append(label, slider);
+    sliderWrap.append(slider);
     numberWrap.append(numberLabel, number);
-    row.append(sliderWrap, numberWrap);
+    row.append(name, sliderWrap, numberWrap);
     return row;
   };
 
